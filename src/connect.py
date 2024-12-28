@@ -13,30 +13,44 @@ class MyServer(BaseHTTPRequestHandler):
 
     def do_GET(self):
         """Метод для обработки входящих GET-запросов"""
-        self.send_response(200)  # Отправка кода ответа
-        self.send_header(
-            "Content-type", "text/html"
-        )  # Отправка типа данных, который будет передаваться
-        self.end_headers()  # Завершение формирования заголовков ответа
+        self.send_response(200)
+        if "img" in self.path:
+            self.send_header("Content-type", "image/svg+xml")
+            with open(".." + self.path, "r", encoding="utf-8") as file:
+                reader = file.read()
+            self.wfile.write(bytes(reader, "utf-8"))
+        else:
+            self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
+
         if self.path == "/main":
-            with open("../html/main.html", "r", encoding="utf-8") as file:
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open("C:/Users/Nurlan/IT/Проекты/django/html/main.html", "r", encoding="utf-8") as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
 
         elif self.path == "/catalog":
-            with open("../html/catalog.html", "r", encoding="utf-8") as file:
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open("C:/Users/Nurlan/IT/Проекты/django/html/catalog.html", "r", encoding="utf-8") as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
 
         elif self.path == "/category1":
-            with open("../html/category1.html", "r", encoding="utf-8") as file:
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open("C:/Users/Nurlan/IT/Проекты/django/html/category1.html", "r", encoding="utf-8") as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
 
         elif self.path == "/contacts":
-            with open("../html/contacts.html", "r", encoding="utf-8") as file:
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open("C:/Users/Nurlan/IT/Проекты/django/html/contacts.html", "r", encoding="utf-8") as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
+        else:
+            self.send_header("Content-type", "text/html")
 
 
 if __name__ == "__main__":
