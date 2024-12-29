@@ -15,9 +15,9 @@ class MyServer(BaseHTTPRequestHandler):
         """Метод для обработки входящих GET-запросов"""
         self.send_response(200)
         if self.path.startswith("/img"):
-            file_path = f".{self.path}"  # Относительный путь к файлу
+            file_path = f".{self.path}"
             if os.path.exists(file_path):
-                self.send_header("Content-type", "image/png")  # MIME-тип для PNG
+                self.send_header("Content-type", "image/png")
                 self.end_headers()
                 with open(file_path, "rb") as file:
                     self.wfile.write(file.read())
