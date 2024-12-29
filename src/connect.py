@@ -10,7 +10,6 @@ class MyServer(BaseHTTPRequestHandler):
     Специальный класс, который отвечает за
     обработку входящих запросов от клиентов
     """
-
     def do_GET(self):
         """Метод для обработки входящих GET-запросов"""
         self.send_response(200)
