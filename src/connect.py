@@ -28,7 +28,7 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/catalog.html",
+                "C:/Users/Nurlan/IT/Проекты/django/html/contacts.html",
                 "r",
                 encoding="utf-8",
             ) as file:
@@ -38,7 +38,7 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                    "C:/Users/Nurlan/IT/Проекты/django/html/catalog.html",
+                    "C:/Users/Nurlan/IT/Проекты/django/html/contacts.html",
                     "r",
                     encoding="utf-8",
             ) as file:
