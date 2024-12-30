@@ -24,18 +24,7 @@ class MyServer(BaseHTTPRequestHandler):
             else:
                 self.send_error(404, "Image Not Found")
 
-        if self.path == "/main":
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/main.html",
-                "r",
-                encoding="utf-8",
-            ) as file:
-                reader = file.read()
-            self.wfile.write(bytes(reader, "utf-8"))
-
-        elif self.path == "/catalog":
+        if self.path == "/":
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
@@ -45,30 +34,17 @@ class MyServer(BaseHTTPRequestHandler):
             ) as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
-
-        elif self.path == "/category1":
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/category1.html",
-                "r",
-                encoding="utf-8",
-            ) as file:
-                reader = file.read()
-            self.wfile.write(bytes(reader, "utf-8"))
-
-        elif self.path == "/contacts":
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/contacts.html",
-                "r",
-                encoding="utf-8",
-            ) as file:
-                reader = file.read()
-            self.wfile.write(bytes(reader, "utf-8"))
         else:
             self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open(
+                    "C:/Users/Nurlan/IT/Проекты/django/html/catalog.html",
+                    "r",
+                    encoding="utf-8",
+            ) as file:
+                reader = file.read()
+            self.wfile.write(bytes(reader, "utf-8"))
+
 
 
 if __name__ == "__main__":
