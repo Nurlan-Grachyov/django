@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import os
+
 # Для начала определим настройки запуска
 hostName = "localhost"  # Адрес для доступа по сети
 serverPort = 8080  # Порт для доступа по сети
@@ -16,24 +17,24 @@ class MyServer(BaseHTTPRequestHandler):
         self.send_response(200)
         if self.path.startswith("/src/img"):
             file_path = f"{self.path[5:]}"
-            print('good1')
-            print(f'это file_path {file_path}')
-            print(f'это self.path {self.path}')
-            print(f'это os.path {os.path.exists(file_path)}')
-            if file_path.endswith('.png'):
+            print("good1")
+            print(f"это file_path {file_path}")
+            print(f"это self.path {self.path}")
+            print(f"это os.path {os.path.exists(file_path)}")
+            if file_path.endswith(".png"):
                 if os.path.exists(file_path):
                     self.send_header("Content-type", "image/png")
                     self.end_headers()
                     with open(file_path, "rb") as file:
                         self.wfile.write(file.read())
-            elif file_path.endswith('svg'):
+            elif file_path.endswith("svg"):
                 if os.path.exists(file_path):
                     self.send_header("Content-type", "image/svg+xml")
                     self.end_headers()
                     with open(file_path, "rb") as file:
                         self.wfile.write(file.read())
             else:
-                print('good3')
+                print("good3")
                 self.send_error(404, "Image Not Found")
 
         if self.path == "/":
@@ -50,9 +51,9 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                    "C:/Users/Nurlan/IT/Проекты/django/html/catalog.html",
-                    "r",
-                    encoding="utf-8",
+                "C:/Users/Nurlan/IT/Проекты/django/html/catalog.html",
+                "r",
+                encoding="utf-8",
             ) as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
@@ -60,9 +61,9 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                    "C:/Users/Nurlan/IT/Проекты/django/html/category1.html",
-                    "r",
-                    encoding="utf-8",
+                "C:/Users/Nurlan/IT/Проекты/django/html/category1.html",
+                "r",
+                encoding="utf-8",
             ) as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
@@ -70,9 +71,9 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                    "C:/Users/Nurlan/IT/Проекты/django/html/contacts.html",
-                    "r",
-                    encoding="utf-8",
+                "C:/Users/Nurlan/IT/Проекты/django/html/contacts.html",
+                "r",
+                encoding="utf-8",
             ) as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
@@ -80,9 +81,9 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                    "C:/Users/Nurlan/IT/Проекты/django/html/main.html",
-                    "r",
-                    encoding="utf-8",
+                "C:/Users/Nurlan/IT/Проекты/django/html/main.html",
+                "r",
+                encoding="utf-8",
             ) as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
