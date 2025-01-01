@@ -42,41 +42,11 @@ class MyServer(BaseHTTPRequestHandler):
             ) as file:
                 reader = file.read()
             self.wfile.write(bytes(reader, "utf-8"))
-        elif self.path == "/catalog":
+        elif self.path == "/catalog" or self.path == "/category" or self.path == "/contacts" or self.path == "/main":
             self.send_header("Content-type", "text/html")
             self.end_headers()
             with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/catalog.html",
-                "r",
-                encoding="utf-8",
-            ) as file:
-                reader = file.read()
-            self.wfile.write(bytes(reader, "utf-8"))
-        elif self.path == "/category":
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/category1.html",
-                "r",
-                encoding="utf-8",
-            ) as file:
-                reader = file.read()
-            self.wfile.write(bytes(reader, "utf-8"))
-        elif self.path == "/contacts":
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/contacts.html",
-                "r",
-                encoding="utf-8",
-            ) as file:
-                reader = file.read()
-            self.wfile.write(bytes(reader, "utf-8"))
-        elif self.path == "/main":
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            with open(
-                "C:/Users/Nurlan/IT/Проекты/django/html/main.html",
+                f"C:/Users/Nurlan/IT/Проекты/django/html{self.path}.html",
                 "r",
                 encoding="utf-8",
             ) as file:
