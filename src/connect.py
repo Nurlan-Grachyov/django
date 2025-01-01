@@ -14,14 +14,19 @@ class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         """Метод для обработки входящих GET-запросов"""
         self.send_response(200)
-        if self.path.startswith("/img"):
-            file_path = f".{self.path}"
+        if self.path.startswith("/src/img"):
+            file_path = f"{self.path[5:]}"
+            print('good1')
+            print(f'это file_path {file_path}')
+            print(f'это self.path {self.path}')
+            print(f'это os.path {os.path.exists(file_path)}')
             if os.path.exists(file_path):
-                self.send_header("Content-type", "image/png")
+                self.send_header("Content-type", "image/svg+xml")
                 self.end_headers()
                 with open(file_path, "rb") as file:
                     self.wfile.write(file.read())
             else:
+                print('good3')
                 self.send_error(404, "Image Not Found")
 
         if self.path == "/":
